@@ -57,9 +57,12 @@ repositories {
 }
 
 dependencies {
-    compile "vazkii.autoreglib:AutoRegLib:${project.arl_version}"
-    compile "curse.maven:psi:${project.psi_file_version}"
-    runtimeOnly "mezz.jei:jei_${project.mc_version}:${project.jei_version}"
+    compileOnly "vazkii.autoreglib:AutoRegLib:${project.arl_version}"
+    deobfProvided "curse.maven:psi:${project.psi_file_version}"
+    compileOnly "mezz.jei:jei_${project.mc_version}:${project.jei_version}"
+
+    compile  "org.reflections:reflections:0.9.12"
+    compile  "org.jetbrains:annotations:13.0"
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
@@ -78,6 +81,9 @@ jar {
         for(String key: attrs.keySet()){
             attributes key: attrs.get(key)
         }
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
