@@ -1,11 +1,14 @@
 package me.susautw.rin_psiutils.utils.reflection;
 
 import org.jetbrains.annotations.NotNull;
+import org.reflections.Reflections;
 
 import java.lang.reflect.Method;
-import java.util.Stack;
 
 public class ReflectionUtils {
+
+    private static Reflections reflections = null;
+
     protected ReflectionUtils(){}
 
     @NotNull
@@ -26,5 +29,14 @@ public class ReflectionUtils {
         if(found == null)
             throw new NoSuchMethodError(String.format("%s.%s()", cls.getName(), methodName));
         return found;
+    }
+
+    public static Reflections getReflections() {
+        if(reflections == null){
+            synchronized (ReflectionUtils.class) {
+                reflections = new Reflections();
+            }
+        }
+        return reflections;
     }
 }
