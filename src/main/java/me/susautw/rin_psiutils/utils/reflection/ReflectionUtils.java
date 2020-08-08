@@ -9,7 +9,8 @@ public class ReflectionUtils {
 
     private static Reflections reflections = null;
 
-    protected ReflectionUtils(){}
+    protected ReflectionUtils(){
+    }
 
     @NotNull
     public static Method getMethod(Class<?> cls, String methodName, Class<?>... argClasses)
@@ -31,8 +32,13 @@ public class ReflectionUtils {
         return found;
     }
 
+    public static void setReflections(Reflections reflections){
+        ReflectionUtils.reflections = reflections;
+    }
+
     public static Reflections getReflections() {
         if(reflections == null){
+            // default Reflections
             synchronized (ReflectionUtils.class) {
                 reflections = new Reflections();
             }

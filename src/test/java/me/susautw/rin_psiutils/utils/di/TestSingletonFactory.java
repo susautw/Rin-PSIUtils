@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 
 public class TestSingletonFactory {
     private SingletonFactory factory;
