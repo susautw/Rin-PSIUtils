@@ -63,6 +63,7 @@ dependencies {
 
     compile  "org.reflections:reflections:0.9.12"
     compile  "org.jetbrains:annotations:13.0"
+    testImplementation 'junit:junit:4.13'
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..
