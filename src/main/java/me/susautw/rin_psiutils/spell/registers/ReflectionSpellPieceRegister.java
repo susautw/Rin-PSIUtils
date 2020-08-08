@@ -16,11 +16,11 @@ public class ReflectionSpellPieceRegister implements BaseSpellPieceRegister {
     private BaseSpellPieceRegister spellPieceRegister;
 
     public ReflectionSpellPieceRegister(BaseSpellPieceRegister spellPieceRegister){
-        this.spellPieceRegister = spellPieceRegister;
+        setSpellPieceRegister(spellPieceRegister);
     }
 
     public ReflectionSpellPieceRegister(){
-        this.spellPieceRegister = new SimpleSpellPieceRegister();
+        this(new SimpleSpellPieceRegister());
     }
 
     @Override

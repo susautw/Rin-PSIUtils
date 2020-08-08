@@ -16,7 +16,7 @@ public class SingletonFactory {
          */
         if(!instances.containsKey(cls)){
             synchronized (SingletonFactory.class){
-                Object instance = getMethod(cls, "getInstance", Class.class).invoke(null, cls);
+                Object instance = getMethod(cls, "createInstance", Class.class).invoke(null, cls);
 
                 if(instance == null){
                     throw new NullPointerException(

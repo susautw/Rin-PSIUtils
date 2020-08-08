@@ -16,8 +16,7 @@ public class TestSingletonFactory {
 
     @Test
     public void testSingletonGetInstanceOf()
-            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        System.out.println(Arrays.toString(FakeSingleton.class.getMethods()));
+            throws IllegalAccessException, InvocationTargetException {
         FakeSingleton expected = factory.getInstanceOf(FakeSingleton.class);
         FakeSingleton actual = factory.getInstanceOf(FakeSingleton.class);
         assertSame(expected, actual);
