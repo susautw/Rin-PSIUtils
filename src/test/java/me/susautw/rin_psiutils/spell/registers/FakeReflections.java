@@ -10,15 +10,22 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class FakeReflections extends Reflections {
+
+    private Class<?>[] returnOfTypesAnnotatedWith = null;
+
     public FakeReflections(){
 
     }
 
     @Override
-    public Set<Class<?>> getTypesAnnotatedWith(final Class<? extends Annotation> annotationx) {
+    public Set<Class<?>> getTypesAnnotatedWith(final Class<? extends Annotation> annotation) {
         Set<Class<?>> set = new HashSet<>();
-        Collections.addAll(set, FakeSpellPiece.class, FakeSpellPiece2.class);
+        Collections.addAll(set, returnOfTypesAnnotatedWith);
         return set;
+    }
+
+    public void setReturnOfTypesAnnotatedWith(Class<?> ...classes){
+        returnOfTypesAnnotatedWith = classes;
     }
 
 

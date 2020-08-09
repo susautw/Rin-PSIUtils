@@ -5,6 +5,7 @@ import me.susautw.rin_psiutils.spell.FakeSpellPiece;
 import static org.junit.Assert.*;
 
 import me.susautw.rin_psiutils.spell.FakeSpellPiece2;
+import me.susautw.rin_psiutils.spell.FakeSpellPiece3;
 import me.susautw.rin_psiutils.utils.reflection.ReflectionsAdapter;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,10 +50,22 @@ public class TestReflectionSpellRegister {
 
     @Test
     public void testRegisterAllSpellPieces() throws Exception{
-        ReflectionsAdapter.setReflections(new FakeReflections());
+        setupFakeReflections(FakeSpellPiece.class, FakeSpellPiece2.class);
         reflectionSpellPieceRegister.registerAll();
         fakeSpellPieceAssertions();
         fakeSpellPiece2Assertions();
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testRegisterAllSpellPiecesWithIncorrectClassType() throws Exception{
+        setupFakeReflections(FakeSpellPiece.class, FakeSpellPiece2.class, FakeSpellPiece3.class);
+        reflectionSpellPieceRegister.registerAll();
+    }
+
+    private void setupFakeReflections(Class<?> ...classes){
+        FakeReflections fakeReflections = new FakeReflections();
+        fakeReflections.setReturnOfTypesAnnotatedWith(classes);
+        ReflectionsAdapter.setReflections(fakeReflections);
     }
 
     private void fakeSpellPieceAssertions(){

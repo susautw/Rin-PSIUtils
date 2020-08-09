@@ -56,6 +56,9 @@ public class ReflectionSpellPieceRegister implements BaseSpellPieceRegister {
         Set<Class<?>> classes = getTypesAnnotatedWith(MarkSpellPiece.class);
         Set<Class<? extends SpellPiece>> check_classes = new HashSet<>();
         for(Class<?> cls: classes){
+            if(!SpellPiece.class.isAssignableFrom(cls)){
+                throw new RuntimeException("The marked spell piece isn't a Spell Piece");
+            }
             check_classes.add((Class<? extends SpellPiece>) cls);
         }
         registerAll(check_classes);
