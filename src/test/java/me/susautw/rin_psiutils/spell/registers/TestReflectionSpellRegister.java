@@ -1,12 +1,11 @@
 package me.susautw.rin_psiutils.spell.registers;
 
 import me.susautw.rin_psiutils.spell.FakeSpellPiece;
-
-import static org.junit.Assert.*;
-
 import me.susautw.rin_psiutils.spell.FakeSpellPiece2;
 import me.susautw.rin_psiutils.spell.FakeSpellPiece3;
 import me.susautw.rin_psiutils.utils.reflection.ReflectionsAdapter;
+
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import vazkii.psi.api.spell.SpellPiece;
