@@ -4,7 +4,7 @@ import me.susautw.rin_psiutils.utils.di.AbstractSingleton;
 import me.susautw.rin_psiutils.utils.di.SingletonFactory;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class AbstractSpellPieceGroup extends AbstractSingleton {
+public abstract class AbstractPieceGroup extends AbstractSingleton {
     public static SingletonFactory instances = new SingletonFactory();
 
     abstract public int getRequiredLevel();
@@ -13,5 +13,5 @@ public abstract class AbstractSpellPieceGroup extends AbstractSingleton {
     abstract public String getGroupName();
 
     @NotNull
-    abstract public AbstractSpellPieceGroup[] getDependency();
+    abstract public AbstractPieceGroup[] getDependency();
 }
