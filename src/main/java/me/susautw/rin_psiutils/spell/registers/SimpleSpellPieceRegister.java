@@ -6,6 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import vazkii.psi.api.PsiAPI;
 import vazkii.psi.api.spell.SpellPiece;
 
+/**
+ * The register just a simple register as a adapter of PsiAPI
+ */
 public class SimpleSpellPieceRegister implements BaseSpellPieceRegister {
 
     @Override
@@ -18,10 +21,4 @@ public class SimpleSpellPieceRegister implements BaseSpellPieceRegister {
         PsiAPI.registerSpellPieceAndTexture(pieceName, pieceClass);
         PsiAPI.addPieceToGroup(pieceClass, pieceName, isMain);
     }
-
-    @Override
-    public void register(@NotNull Class<? extends SpellPiece> spellPieceClass) throws NotImplementedException {
-        throw new NotImplementedException("register");
-    }
-
 }

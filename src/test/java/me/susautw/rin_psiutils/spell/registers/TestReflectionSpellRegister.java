@@ -5,8 +5,7 @@ import me.susautw.rin_psiutils.spell.FakeSpellPiece;
 import static org.junit.Assert.*;
 
 import me.susautw.rin_psiutils.spell.FakeSpellPiece2;
-import me.susautw.rin_psiutils.utils.reflection.ReflectionUtils;
-import org.junit.After;
+import me.susautw.rin_psiutils.utils.reflection.ReflectionsAdapter;
 import org.junit.Before;
 import org.junit.Test;
 import vazkii.psi.api.spell.SpellPiece;
@@ -50,7 +49,7 @@ public class TestReflectionSpellRegister {
 
     @Test
     public void testRegisterAllSpellPieces() throws Exception{
-        ReflectionUtils.setReflections(new FakeReflections());
+        ReflectionsAdapter.setReflections(new FakeReflections());
         reflectionSpellPieceRegister.registerAll();
         fakeSpellPieceAssertions();
         fakeSpellPiece2Assertions();

@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 import static org.junit.Assert.*;
 
-import static me.susautw.rin_psiutils.utils.reflection.ReflectionUtils.*;
+import static me.susautw.rin_psiutils.utils.reflection.ReflectionsAdapter.*;
 
 public class TestReflectionUtils {
     static Method staticMethodA;

@@ -8,13 +8,20 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-import static me.susautw.rin_psiutils.utils.reflection.ReflectionUtils.getReflections;
+import static me.susautw.rin_psiutils.utils.reflection.ReflectionsAdapter.*;
 
 
+/**
+ * This class use the annotation(MarkSpellPiece) to automatically find this mods' spell pieces
+ * by reflection.
+ */
 public class ReflectionSpellPieceRegister implements BaseSpellPieceRegister {
 
     private BaseSpellPieceRegister spellPieceRegister;
 
+    /**
+     * Constructor for dependency injection
+     */
     public ReflectionSpellPieceRegister(BaseSpellPieceRegister spellPieceRegister){
         setSpellPieceRegister(spellPieceRegister);
     }
@@ -46,7 +53,7 @@ public class ReflectionSpellPieceRegister implements BaseSpellPieceRegister {
 
     @Override
     public void registerAll() throws Exception {
-        Set<Class<?>> classes = getReflections().getTypesAnnotatedWith(MarkSpellPiece.class);
+        Set<Class<?>> classes = getTypesAnnotatedWith(MarkSpellPiece.class);
         Set<Class<? extends SpellPiece>> check_classes = new HashSet<>();
         for(Class<?> cls: classes){
             check_classes.add((Class<? extends SpellPiece>) cls);

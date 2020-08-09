@@ -4,16 +4,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static me.susautw.rin_psiutils.utils.reflection.ReflectionUtils.getMethod;
+import static me.susautw.rin_psiutils.utils.reflection.ReflectionsAdapter.getMethod;
 
 public class SingletonFactory {
     private final Map<Class<?>, Object> instances = new HashMap<>();
 
+    /**
+     * Get the instance of class. return a new instance if not contains the instance.
+     */
     public <T extends AbstractSingleton> T getInstanceOf(Class<T> cls)
             throws InvocationTargetException, IllegalAccessException {
-        /**
-         * Get the instance of class. get a new instance if not contains the instance.
-         */
+
         if(!instances.containsKey(cls)){
             synchronized (SingletonFactory.class){
                 Object instance = getMethod(cls, "createInstance", Class.class).invoke(null, cls);

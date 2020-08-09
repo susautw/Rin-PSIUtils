@@ -14,7 +14,7 @@ public class TestSimpleSpellPieceRegister {
     }
 
     @Test(expected = NotImplementedException.class)
-    public void testRegister() throws NotImplementedException {
+    public void testRegister() throws Exception {
         simpleSpellPieceRegister.register(FakeSpellPiece.class);
     }
 }
